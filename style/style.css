@@ -1,0 +1,512 @@
+
+/**
+ * Custom CSS added here 
+ */
+ html {
+  scroll-behavior: smooth;
+}
+
+ body {
+  font-family: "Raleway", sans-serif;
+  background-color: #ffffff;
+}
+.container {
+  max-width: 100%;
+  height: 100vh;
+}
+
+.container > * {
+  display: flex;
+  place-content: center;
+  letter-spacing: 0.05rem;
+}
+
+a{
+  text-decoration: none;
+}
+
+.botonmenu{
+  pointer-events: none;
+filter: opacity(0);
+  font-size: 110%;
+  line-height: 0.15;
+  text-align: center;
+  color: white;
+margin: 2%;
+  z-index: 999;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.334);
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+}
+.botonmenu p{
+  transform: scaleX(1.6) scale(3); 
+}
+
+.botonmenudesplegable {
+  padding-top: 30%;
+  font-size: 160%;
+  text-align: center;
+  z-index: 997;
+  position: fixed;
+  display: none; 
+  background-color: rgba(0, 0, 0, 0.674);
+  backdrop-filter: blur(5px);
+  width: 100%;
+  height: 100%;
+}
+.cerrar {
+  right: 0;
+  display: none; /* Inicialmente oculto */
+  text-align: center;
+  color: white;
+margin: 2%;
+  z-index: 999;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+}
+.cerrar p{
+  padding-top: 20%;
+  transform: scale(2.2); 
+}
+
+/* Animación de entrada (deslizamiento de izquierda a derecha) */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 50%;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+/* Animación de salida (deslizamiento de derecha a izquierda) */
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Estado visible con animación de entrada */
+.botonmenudesplegable.show {
+  animation: slideIn 0.5s forwards; /* Aparece deslizándose */
+}
+
+/* Estado oculto con animación de salida */
+.botonmenudesplegable.hide {
+  animation: slideOut 0.2s forwards; /* Desaparece deslizándose */
+}
+
+/* Para mostrar el botón de cerrar */
+.cerrar.show {
+  animation: slideIn 0.8s forwards;
+}
+
+.cerrar.hide {
+  animation: slideOut 0.2s forwards;
+}
+.botonmenudesplegable a{
+
+  border-bottom: 1px solid #ffffffab;
+  background-color: rgba(255, 255, 255, 0.195);
+  color: white;
+  display: block;
+  line-height: 3;
+}
+
+/*---------------WSSP-------------------*/
+.iconowssp{
+  border-radius: 50%;
+  right: 2%;
+  bottom: 5%;
+  z-index: 990;
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  background-image: url(/assets/WhatsApp_icon.png);
+  background-size: cover;
+  transition: 0.3s ease;
+}
+.iconowssp:hover,
+.header a:hover,
+.footer a:hover{
+  transition: 0.3s ease;
+transform: scale(1.1);
+}
+
+
+/*---------------HEADER-------------------*/
+
+
+.header{
+  overflow: hidden;
+  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.322);
+  z-index: 99;
+  display: flex;
+  position: fixed;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 120px;
+  transition: top 0.3s ease;
+}
+.logo{
+  position: absolute;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background-color: yellowgreen;
+}
+.opcionesheader{
+  flex-wrap: wrap;
+display: flex;
+  position: absolute;
+  top:30%;
+  right: 5%;
+  background-color: rgb(255, 255, 255);
+}
+.header a{
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  font-size: 120%;
+}
+
+
+
+
+/*---------------BANNER-------------------*/
+.banner {
+ background-image: url(/assets/wall2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  color: hsl(0, 0%, 100%);
+  transition: 1s;
+}
+
+.titulo{
+  font-size: 180%;
+  text-align: center;
+  position: absolute;
+  bottom: 15%;
+  width: 90%;
+  background-color: tomato;
+}
+
+
+/*---------------WEB-------------------*/
+.web{
+  word-wrap: break-word;
+  text-align: center;
+  width: 100%;
+ 
+  padding: 10% 15% 5% 15%;
+}
+
+.COPY{
+  background-color: rgb(0, 201, 137);
+  color: white;
+  padding: 20PX;
+}
+.marcas{
+  width: 100%;
+  padding: 2% 15% 2% 15%;
+  flex-wrap: wrap;
+  display: flex;
+  position: relative;
+}
+.marcaslogo{
+  background-size: cover;
+
+margin: 0% 1% 0% 1%;
+  width: 120px;
+  height: 80px;
+}
+/*---------------FOTTER-------------------*/
+.footer{
+  padding: 2% 15% 2% 15%;
+  flex-wrap: wrap;
+  display: flex;
+  position: relative;
+}
+.redes{
+  filter: opacity(50%);
+  background-size: cover;
+margin: 0% 1% 0% 1%;
+  width: 50px;
+  height: 50px;
+}
+.redes:hover{
+filter: opacity(100%);
+}
+.redes2{
+  padding: 0% 15% 5% 15%;
+}
+
+.contacto{
+  padding: 5% 15% 0% 15%;
+}
+.contacto, .redes2, .footer{
+  color: white;
+  background-color: rgb(82, 82, 82);
+  width: 100%;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/*---------------------------SERVICIOS----------------------------*/
+
+.serviciosweb{
+  padding: 15% 15% 5% 15%;
+}
+
+.serviciosopciones{
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+}
+.tipodeservicio{
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+  background-size: cover;
+  color: white;
+width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+.tipodeservicio p{
+  text-shadow: 0px 0px 11px rgba(0,0,0,1);
+pointer-events: none;
+  position: absolute;
+  z-index: 50;
+
+}
+.fondoservicio{
+  pointer-events: none;
+  background-size: cover;
+  position: absolute;
+  z-index: 40;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.6);
+  transition: 0.3s ease;
+}
+.tipodeservicio:hover   .fondoservicio{
+  transition: 0.3s ease;
+  transform: scale(1.1);
+  filter: brightness(1);
+} 
+
+
+.serviciosdesplegable {
+  
+  position: relative;
+  display: flex;
+  padding: 5% 10% 5% 10%;
+  text-align: center;
+  word-wrap: break-word;
+  display: none;
+  width: 100%;
+  border-radius: 0px 0px 40px 40px;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.679);
+}
+
+.contenedormuestras{
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.muestras{
+  text-align: center;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 25px;
+}
+.textomuestra{
+  padding: 0% 25%;
+  text-shadow: 0px 0px 9px rgba(0,0,0,1);
+  flex-wrap: wrap;
+  font-weight: bold;
+  font-size: 120%;
+  color: white;
+  pointer-events: none;
+  z-index: 10;
+  bottom: 15px;
+  width: 100%;
+  position: absolute;
+}
+.carta {
+  border-radius: 28px;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;;
+}
+.carta:hover{
+  z-index: 9;
+}
+.fondotextura{
+
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+.sombra{
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 7;
+}
+
+.circle1 {/*---------------LUZ SUAVE-------------------*/
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0px 0px 100px 100px rgb(255, 255, 255);
+  z-index: 6;
+}
+.circle2 {/*---------------SATINADO-------------------*/
+  position: absolute;
+filter: brightness(2);
+  background-image: url(/assets/reflejoVENTANAsatinado.png);
+  background-size: cover;
+  width: 550PX;
+  height: 510PX;
+  z-index: 6;
+transform: translate(-250px, -220px);
+}
+.circle3 {/*---------------REFLEJO VENTANA-------------------*/
+  position: absolute;
+filter: brightness(2);
+  background-image: url(/assets/reflejoVENTANA.png);
+  background-size: cover;
+  width: 550PX;
+  height: 510PX;
+  z-index: 6;
+transform: translate(-250px, -220px);
+}
+/*---------------MEDIA-------------------*/
+@media only screen and (max-width: 850px) {
+
+  .header{
+    position: static;
+    display: flex;
+    justify-content: center;
+
+    height: 15%;
+  }
+  .logo{
+    position: relative;
+    width: 300px;
+    height: 100%;
+    background-color: yellowgreen;
+  }
+
+  .opcionesheader{
+display: none;
+  }
+
+
+  .redes{
+  margin: 8% 5% 5% 5%;
+  }
+  .redes2{
+    display: block;
+    line-height: 1.5;
+ font-size: 130%;
+ padding: 0% 15% 10% 15%;
+  }
+
+  .iconowssp{
+    right: 4%;
+    bottom: 4%;
+  }
+  .COPY{
+    background-color: rgb(0, 201, 137);
+    color: white;
+    padding: 60PX;
+  }
+  .contacto{
+    padding: 10% 15% 0% 15%;
+  }
+  .botonmenu{
+    pointer-events: all;
+filter: opacity(1);
+
+  }
+  .serviciosweb{
+    position: relative;
+    padding: 15%;
+  }
+  .marcas{
+    padding: 10% 10% 10% 10%;
+  }
+  .marcaslogo{
+    background-size: cover;
+  margin: 0% 1% 0% 1%;
+    width: 70px;
+    height: 47px;
+  }
+
+  .serviciosopciones{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 400px;
+  }
+  .tipodeservicio{
+    height: 100px;
+  }
+  .tipodeservicio p{
+    font-size: 120%;
+  }
+  .contenedormuestras{
+    padding-bottom: 50PX;
+  }
+  
+  .muestras{
+    width: 100%;
+    height: 150px;
+    margin: 15px;
+  }
+  .textomuestra{
+    padding: 0% 0%;
+    font-weight: bold;
+    font-size: 100%;
+
+    bottom: 15px;
+  }
+  .circle2, .circle3{
+    width: 800PX;
+    height: 610PX;
+    transform: translate(-400px, -220px);
+  }
+}
