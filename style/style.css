@@ -318,7 +318,8 @@ pointer-events: none;
 
 
 .serviciosdesplegable {
-  
+  overflow: hidden;
+  color: white;
   position: relative;
   display: flex;
   padding: 5% 10% 5% 10%;
@@ -335,7 +336,7 @@ pointer-events: none;
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 50px;
+  margin-top: 70px;
   justify-content: center;
 }
 
@@ -345,6 +346,13 @@ pointer-events: none;
   width: 250px;
   height: 250px;
   margin: 25px;
+}
+.titulomuestras{
+  font-size: 120%;
+  padding-top: 40px;
+  left: 0;
+  width: 100%;
+  position: absolute;
 }
 .textomuestra{
   padding: 0% 25%;
