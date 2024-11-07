@@ -38,15 +38,13 @@ a {
   position: fixed;
   width: 50px;
   height: 50px;
-  border: 3px solid rgb(255, 255, 255);
   border-radius: 10px;
+  background-image: url(../assets/options.png);
+  background-size: cover;
   background-color: rgba(0, 0, 0, 0.334);
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 }
 
-.botonmenu p {
-  transform: scaleX(1.6) scale(3);
-}
+
 
 .botonmenudesplegable {
   padding-top: 30%;
@@ -507,7 +505,7 @@ border-radius: 25px;
   margin: auto;
 }
 .serviciosdesplegable h2{
-font-size: 220%;
+font-size: 200%;
 }
 .serviciosdesplegable P{
   font-size: 120%;
@@ -673,12 +671,12 @@ animation:backgroundmove 30s ease infinite;
   }
 
 
-
   .titulo {
     bottom: 25%;
   }
 
 .web{
+  margin-top: 0px;
   overflow: hidden;
   padding: 10% 0% 20% 0%;
 }
@@ -728,7 +726,7 @@ animation:backgroundmove 30s ease infinite;
 
   .serviciosweb {
     position: relative;
-    padding: 0%;
+    padding: 20% 0% 0% 0%;
   }
 
  
@@ -752,7 +750,7 @@ display: block;
   }
   .serviciosdesplegable {
     overflow: visible;
-    margin-top: 8%;
+    margin-top: 5px;
  padding-top: 10%;
   }
   .tipodeservicio {
@@ -795,14 +793,12 @@ display: block;
     height: 610PX;
     transform: translate(-400px, -220px);
   }
-  .titulo h2 {
-    font-size: 150%;
-  }
+
   .titulo p {
     font-size: 70%;
     }
     .lineadetiempo{
-      transform: scale(0.7);
+      transform: scale(1);
     }
     .tiposdepintura{
       display: flex;
