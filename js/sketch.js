@@ -1,9 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     const bannerImages = [
-      'assets/wall1.jpg',
-      'assets/wall2.jpg',
-      'assets/wall3.jpg', 
+      'assets/wall1.png',
+      'assets/wall2.png',
+      'assets/wall3.png',
+      'assets/wall4.png', 
     ];
   
     let currentImageIndex = 0;
@@ -80,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function() {
       let currentScrollPosition = window.pageYOffset;
 
       // Si el usuario baja, ocultar el header parcialmente (top -50px para ocultar la mitad)
-      if (previousScrollPosition < currentScrollPosition && currentScrollPosition > 50) {
-          header.style.top = "-20px"; // Desliza el header parcialmente hacia arriba
+      if (previousScrollPosition < currentScrollPosition && currentScrollPosition > 100) {
+          header.style.top = "-100px"; // Desliza el header parcialmente hacia arriba
       } 
       // Si el usuario sube, mostrar el header nuevamente
       else {
@@ -98,33 +99,44 @@ document.addEventListener("DOMContentLoaded", function() {
     link.addEventListener('click', function(e) {
         e.preventDefault(); // Evita la navegación inmediata
 
-        const targetId = this.getAttribute('href'); // Obtiene el id del div a mostrar
+        const targetId = this.getAttribute('href'); // Obtiene el id del div a mostrar (debe incluir #, ej. #nosotros)
+        
+        // Verifica si el id tiene el # al inicio; si no, lo agrega
+        if (targetId && !targetId.startsWith('#')) {
+            targetId = '#' + targetId;
+        }
+        
         const targetDiv = document.querySelector(targetId); // Selecciona el div correspondiente
 
-        // Oculta todos los divs desplegables
-        document.querySelectorAll('.serviciosdesplegable').forEach(function(div) {
-            div.style.display = 'none'; // Oculta los demás divs
-            div.classList.remove('activo'); // Remueve la clase 'activo' de todos
-            div.style.animation = 'none'; // Detenemos cualquier animación en progreso
-        });
-
-        // Muestra el div correspondiente
-        targetDiv.style.display = 'block';
-
-        // Forzamos el reinicio de la animación
-        setTimeout(function() {
-            targetDiv.style.animation = ''; // Reiniciamos la animación
-            targetDiv.classList.add('activo'); // Agregamos la clase que reproduce el keyframe
-            targetDiv.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-                inline: 'nearest'
+        if (targetDiv) { // Verifica si el div existe
+            // Oculta todos los divs desplegables
+            document.querySelectorAll('.serviciosdesplegable').forEach(function(div) {
+                div.style.display = 'none'; // Oculta los demás divs
+                div.classList.remove('activo'); // Remueve la clase 'activo' de todos
+                div.style.animation = 'none'; // Detenemos cualquier animación en progreso
             });
-        }, 10); // Pequeño retraso para asegurar que la animación se reinicie
+
+            // Muestra el div correspondiente
+            targetDiv.style.display = 'block';
+
+            // Forzamos el reinicio de la animación
+            setTimeout(function() {
+                targetDiv.style.animation = ''; // Reiniciamos la animación
+                targetDiv.classList.add('activo'); // Agregamos la clase que reproduce el keyframe
+
+                // Desplaza la página de forma suave al div mostrado
+                const targetPosition = targetDiv.getBoundingClientRect().top + window.pageYOffset - 100; // Ajusta -100 según lo que desees
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }, 10); // Pequeño retraso para asegurar que la animación se reinicie
+        } else {
+            console.warn('El div con id ' + targetId + ' no se encontró.');
+        }
     });
 });
-
-
 
 
 /*--------------------------------------efecto holografdico 3d---------------------------------------*/
@@ -143,7 +155,7 @@ function aplicarEfectos(elemento, tipoCircle) {
     // Transformación 3D y sombra
     const xAxis = (centerX - x) / 10;
     const yAxis = (centerY - y) / -10;
-    elemento.style.transform = `perspective(400px) rotateX(${yAxis}deg) rotateY(${xAxis}deg) scale(1.1)`;
+    elemento.style.transform = `perspective(400px) rotateX(${yAxis}deg) rotateY(${xAxis}deg) scale(1.2)`;
 
     // Sombra ajustada
     const shadowX = (x - rect.left - rect.width / 2) / 8;
