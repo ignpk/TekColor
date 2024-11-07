@@ -190,6 +190,7 @@ a {
 }
 
 .header a {
+  transition: 0.3s ease;
   height: 50px;
   font-weight: bold;
   color: rgb(128, 128, 128);
@@ -341,7 +342,7 @@ filter: opacity(0);
   font-size: 180%;
   text-align: center;
   position: absolute;
-  bottom: 32%;
+  bottom: 40%;
   width: 90%;
 }
 
@@ -672,7 +673,7 @@ animation:backgroundmove 30s ease infinite;
 
 
   .titulo {
-    bottom: 25%;
+    bottom: 30%;
   }
 
 .web{
@@ -795,8 +796,12 @@ display: block;
   }
 
   .titulo p {
-    font-size: 70%;
+    font-size: 60%;
     }
+    .titulo h2{
+      font-size: 190%;
+    }
+
     .lineadetiempo{
       transform: scale(1);
     }
