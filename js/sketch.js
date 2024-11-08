@@ -179,8 +179,11 @@ function aplicarEfectos(elemento, tipoCircle) {
   }
 
   function handleOrientation(event) {
-    const x = event.gamma; // Obtiene el valor de la orientación en el eje X
-    updateEffects(x * window.innerWidth / 180, window.innerHeight / 2); // Ajustamos la rotación en el eje X
+    // Normalizamos el valor de gamma para que el valor 0 sea el centro
+    let x = event.gamma; // Obtiene el valor de la orientación en el eje X
+    // Ajustamos la rotación, de modo que cuando gamma sea 0 (sin inclinación), el div esté centrado
+    let normalizedX = (x / 90) * window.innerWidth; // Normalizamos el valor de gamma entre -window.innerWidth y window.innerWidth
+    updateEffects(normalizedX, window.innerHeight / 2); // Solo movemos el div horizontalmente
   }
 
   if (window.innerWidth < 400) {
