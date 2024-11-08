@@ -180,7 +180,7 @@ function aplicarEfectos(elemento, tipoCircle) {
 
   function handleOrientation(event) {
     const x = event.gamma; // Obtiene el valor de la orientación en el eje X
-    updateEffects(x * window.innerWidth / 90, window.innerHeight / 2); // Ajustamos la rotación en el eje X
+    updateEffects(x * window.innerWidth / 0, window.innerHeight / 2); // Ajustamos la rotación en el eje X
   }
 
   if (window.innerWidth < 400) {
