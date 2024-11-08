@@ -144,7 +144,7 @@ const carta = document.querySelectorAll(".carta");
 
 function aplicarEfectos(elemento, tipoCircle) {
   const circle = document.createElement("div");
-  circle.classList.add(tipoCircle); // Aplica la clase indicada en el atributo data-circle
+  circle.classList.add(tipoCircle);
   elemento.appendChild(circle);
 
   function updateEffects(x, y) {
@@ -152,17 +152,14 @@ function aplicarEfectos(elemento, tipoCircle) {
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    // Transformación 3D y sombra
     const xAxis = (centerX - x) / 10;
     const yAxis = (centerY - y) / -10;
     elemento.style.transform = `perspective(400px) rotateX(${yAxis}deg) rotateY(${xAxis}deg) scale(1.2)`;
 
-    // Sombra ajustada
     const shadowX = (x - rect.left - rect.width / 2) / 8;
     const shadowY = (y - rect.top - rect.height / 2) / 15;
     elemento.style.boxShadow = `${shadowX}px ${shadowY}px 5px rgba(0, 0, 0, 0.3)`;
 
-    // Posicionamiento de 'circle'
     circle.style.left = `${x - rect.left - 50}px`;
     circle.style.top = `${y - rect.top - 50}px`;
   }
@@ -181,14 +178,25 @@ function aplicarEfectos(elemento, tipoCircle) {
     elemento.style.transform = "perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)";
   }
 
-  elemento.addEventListener("mousemove", handleMouseMove);
-  elemento.addEventListener("touchmove", handleTouchMove);
+  function handleOrientation(event) {
+    const x = event.gamma; // Obtiene el valor de la orientación en el eje X
+    updateEffects(x * window.innerWidth / 180, window.innerHeight / 2); // Ajustamos la rotación en el eje X
+  }
+
+  if (window.innerWidth < 400) {
+    window.addEventListener("deviceorientation", handleOrientation);
+  } else {
+    elemento.addEventListener("mousemove", handleMouseMove);
+    elemento.addEventListener("touchmove", handleTouchMove);
+    elemento.addEventListener("mouseleave", resetEffects);
+    elemento.addEventListener("touchend", resetEffects);
+  }
+
   elemento.addEventListener("mouseleave", resetEffects);
   elemento.addEventListener("touchend", resetEffects);
 }
 
-// Itera sobre cada carta, aplicando el tipo de círculo según el valor en el atributo `data-circle`
 carta.forEach((elemento) => {
-  const tipo = elemento.getAttribute("data-circle"); // Obtiene el valor del atributo data-circle
+  const tipo = elemento.getAttribute("data-circle");
   aplicarEfectos(elemento, tipo);
 });
