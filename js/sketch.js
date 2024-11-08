@@ -179,22 +179,40 @@ function aplicarEfectos(elemento, tipoCircle) {
   }
 
   function handleOrientation(event) {
-    // Normalizamos el valor de gamma para que el valor 0 sea el centro (sin inclinación)
-    let x = event.gamma; // Obtiene el valor de la orientación en el eje X
-    // Ajustamos el valor para que cuando gamma sea 0, el div esté en posición neutral (sin inclinación)
-    let normalizedX = (x / 90) * window.innerWidth; // Normalizamos el valor de gamma
-    normalizedX = normalizedX + window.innerWidth / 2; // Asegura que el movimiento comience desde el centro de la pantalla
-    updateEffects(normalizedX, window.innerHeight / 2); // Movemos el div solo horizontalmente
+    let x = event.gamma;
+    let normalizedX = (x / 90) * window.innerWidth;
+    normalizedX = normalizedX + window.innerWidth / 2;
+    updateEffects(normalizedX, window.innerHeight / 2);
   }
 
-  if (window.innerWidth < 400) {
-    window.addEventListener("deviceorientation", handleOrientation);
-  } else {
-    elemento.addEventListener("mousemove", handleMouseMove);
-    elemento.addEventListener("touchmove", handleTouchMove);
-    elemento.addEventListener("mouseleave", resetEffects);
-    elemento.addEventListener("touchend", resetEffects);
+  function detectGiroscopio() {
+    return new Promise((resolve) => {
+      function onDeviceOrientation(event) {
+        if (event.gamma !== null) {
+          window.removeEventListener("deviceorientation", onDeviceOrientation);
+          resolve(true);
+        }
+      }
+
+      window.addEventListener("deviceorientation", onDeviceOrientation);
+
+      setTimeout(() => {
+        window.removeEventListener("deviceorientation", onDeviceOrientation);
+        resolve(false);
+      }, 1000);
+    });
   }
+
+  detectGiroscopio().then((hasGyroscope) => {
+    if (hasGyroscope && window.innerWidth < 400) {
+      window.addEventListener("deviceorientation", handleOrientation);
+    } else {
+      elemento.addEventListener("mousemove", handleMouseMove);
+      elemento.addEventListener("touchmove", handleTouchMove);
+      elemento.addEventListener("mouseleave", resetEffects);
+      elemento.addEventListener("touchend", resetEffects);
+    }
+  });
 
   elemento.addEventListener("mouseleave", resetEffects);
   elemento.addEventListener("touchend", resetEffects);
