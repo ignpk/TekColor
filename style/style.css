@@ -658,7 +658,9 @@ font-size: 130%;
   .circle3{
     pointer-events: none;
   }
-
+  .contenedormuestras {
+    padding-top: 30PX;
+  }
 }
 
 @media only screen and (max-width: 850px) {
