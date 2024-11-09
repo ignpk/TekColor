@@ -1,10 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     const bannerImages = [
-      'assets/wall1.png',
-      'assets/wall2.png',
-      'assets/wall3.png',
-      'assets/wall4.png', 
+      'assets/wall1.webp',
+      'assets/wall2.webp',
+      'assets/wall3.webp',
+      'assets/wall4.webp', 
     ];
   
     let currentImageIndex = 0;
