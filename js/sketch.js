@@ -1,25 +1,38 @@
 
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
-    const bannerImages = [
+  const bannerImages = [
       'assets/wall1.webp',
       'assets/wall2.webp',
       'assets/wall3.webp',
       'assets/wall4.webp', 
-    ];
-  
-    let currentImageIndex = 0;
-    const banner = document.querySelector('.banner');
-  
-    function changebannerImage() {
-      // Cambiar la imagen de fondo cada 1 segundo
+  ];
+
+  let currentImageIndex = 0;
+  const banner = document.querySelector('.banner');
+  const preloadedImages = [];
+
+  // Precargar todas las imágenes
+  bannerImages.forEach((imageSrc) => {
+      const img = new Image();
+      img.src = imageSrc;
+      preloadedImages.push(img); // Guardar la imagen precargada en el array
+  });
+
+  // Función para cambiar la imagen de fondo
+  function changeBannerImage() {
       banner.style.backgroundImage = `url(${bannerImages[currentImageIndex]})`;
       currentImageIndex = (currentImageIndex + 1) % bannerImages.length; // Ciclar las imágenes
-    }
-  
-    // Cambia la imagen cada 1 segundo
-    setInterval(changebannerImage, 5000);
-  });
-  
+  }
+
+  // Inicia el carrusel después de que todas las imágenes se han precargado
+  setTimeout(() => {
+      changeBannerImage(); // Mostrar la primera imagen inmediatamente
+      setInterval(changeBannerImage, 5000); // Cambiar cada 5 segundos
+  }, 1000); // Retardo breve para asegurar la precarga
+});
 
   // animacion boton menu------------------------------------------------
 
@@ -82,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Si el usuario baja, ocultar el header parcialmente (top -50px para ocultar la mitad)
       if (previousScrollPosition < currentScrollPosition && currentScrollPosition > 100) {
-          header.style.top = "-100px"; // Desliza el header parcialmente hacia arriba
+          header.style.top = "-80px"; // Desliza el header parcialmente hacia arriba
       } 
       // Si el usuario sube, mostrar el header nuevamente
       else {
