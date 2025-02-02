@@ -502,6 +502,32 @@ filter: opacity(0);
   margin: 0% auto 2% auto;
 }
 
+.botonmas{
+  display: flex;
+  border-radius: 50%;
+  border: 1px solid white;
+  bottom: 17%;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 9999;
+background-color: rgba(0, 0, 0, 0.08);
+  background-size: cover;
+  align-items: center;
+ text-align: center;
+  justify-content: center;
+  box-shadow: 0px 0px 35px 3px rgba(0, 0, 0, 0.186);
+  font-weight: lighter;
+  font-size: 300%;
+  pointer-events: none;
+  visibility: hidden;
+  transition: 0.1s ease;
+}
+.tipodeservicio:hover .botonmas {
+  transition: 0.1s ease;
+  visibility: visible;
+}
+
 .tipodeservicio {
 border-radius: 25px;
   text-align: center;
@@ -541,7 +567,6 @@ border-radius: 25px;
 .tipodeservicio:hover .fondoservicio {
   transition: 0.5s ease;
   transform: scale(1.1);
-  filter: brightness(1) brightness(1) ;
 }
 
 
@@ -909,4 +934,12 @@ font-size: 150%;
         height: 200px;
       background-size: cover;
       }
+
+      .botonmas{
+        bottom: 25%;
+right: 10%;
+        visibility: visible;
+
+      }
+
 }
