@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
       'assets/wall2.webp',
       'assets/wall3.webp',
       'assets/wall4.webp', 
+      'assets/wall5.webp', 
   ];
 
   let currentImageIndex = 0;
