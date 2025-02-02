@@ -860,7 +860,7 @@ animation:backgroundmove 30s ease infinite;
   .serviciosopciones {
 display: block;
     width: 100%;
-    height: 400px;
+    height: 520px;
     margin: 30px 0% 20px 0%;
     border-radius: 0px;
   }
@@ -879,11 +879,22 @@ font-size: 150%;
   .tipodeservicio {
     border-radius: 0px;
       width: 100%;
-      height: 100px;
+      height: 130px;
     }
   .tipodeservicio p {
     font-size: 150%;
+    top: 30%;
   }
+  .botonmas{
+    width: 30px;
+    height: 30px;
+    bottom: 20%;
+    visibility: visible;
+    box-shadow: 0px 0px 35px 3px rgba(0, 0, 0, 0.452);
+    background-color: rgba(0, 0, 0, 0.293);
+  }
+  
+
 
   .contenedormuestras {
     padding-bottom: 10PX;
@@ -935,11 +946,5 @@ font-size: 150%;
       background-size: cover;
       }
 
-      .botonmas{
-        bottom: 25%;
-right: 10%;
-        visibility: visible;
-
-      }
-
+  
 }
